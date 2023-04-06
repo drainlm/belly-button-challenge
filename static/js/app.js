@@ -14,11 +14,11 @@ function init() {
      dropdownMenu.append("option").text(X)
     });
 
-    // Create Horizontal Bar Chart
+// Create Horizontal Bar Chart
 
     // Initialize arrays
     let id = names[0];
-    let sample = data.samples.filter((d) => d.id === id)[0];
+    let sample = data.samples.filter((sample) => sample.id === id)[0];
     let otu_ids = [];
     let sample_values = [];
     let otu_labels = [];
@@ -35,8 +35,8 @@ function init() {
         sample_values.reverse();
         otu_labels.reverse()
 
-    // traceData for Top 10 OTU chart
-    let barData = [{
+    // barTraceData for Top 10 OTU chart
+    let barTraceData = [{
         x: sample_values,
         y: otu_ids,
         text: otu_labels, 
@@ -46,13 +46,39 @@ function init() {
 
     // Apply layout
     let barLayout = {
+        title: "Top 10 OTUs",
         height: 450,
         width: 300
     };
 
     // Render the plot to the div tag with id "bar"
-    Plotly.newPlot("bar", barData, barLayout);
+    Plotly.newPlot("bar", barTraceData, barLayout);
 
+// Create Bubble Chart
+
+    // bubbleTraceData for Bubble Chart
+    let bubbleTraceData = [{
+        x: sample.otu_ids,
+        y: sample.sample_values,
+        text: sample.otu_labels,
+        mode: 'markers',
+        marker: {
+          size: sample.sample_values,
+          color: sample.otu_ids,
+          colorscale: 'Earth'
+        }
+    }];
+
+    // Apply layout
+    let bubbleLayout = {
+        xaxis: {title: 'OTU ID'},
+        height: 600,
+        width: 1000
+    };
+
+        // Render the plot to the div tag with id "bubble"
+        Plotly.newPlot("bubble", bubbleTraceData, bubbleLayout);
+        
 
     });
 }

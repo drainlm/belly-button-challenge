@@ -1,56 +1,46 @@
-# belly-button-challenge - Module 14 Challenge
+# Belly Button Biodiversity Dashboard
 
-### Instructions
+This project creates an interactive dashboard to visualize belly button biodiversity data. The dashboard contains a drop-down menu that allows the test subject ID to be selected, a horizontal bar chart for the top 10 OTUs ([Operational Taxonomic Units](https://en.wikipedia.org/wiki/Operational_taxonomic_unit)) found in the selected subject, a bubble chart for the OTUs in the selected subject, and a table to display the select subject's demographic information.
 
-    Complete the following steps:
+The dataset is imported and initailzed with D3 and teh charts are rendered using the Plotly library.
 
-    1. Use the D3 library to read in`samples.json` from the URL `https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json`.
+### Drop Down Menu for Test Subject ID No. 
 
-1. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
+This drop down menu allows the user to select a test subject ID number to display that data subject's data.
 
-   * Use `sample_values` as the values for the bar chart.
-   * Use `otu_ids` as the labels for the bar chart.
-   * Use `otu_labels` as the hovertext for the chart.
-     ![bar Chart](https://static.bc-edx.com/data/dl-1-2/m14/lms/img/hw01.jpg)
-2. Create a bubble chart that displays each sample.
+`<png>`
 
-   * Use `otu_ids` for the x values.
-   * Use `sample_values` for the y values.
-   * Use `sample_values` for the marker size.
-   * Use `otu_ids` for the marker colors.
-   * Use `otu_labels` for the text values.
+### Horizontal Bar Chart
 
-   ![Bubble Chart](https://static.bc-edx.com/data/dl-1-2/m14/lms/img/bubble_chart.jpg)
-3. Display the sample metadata, i.e., an individual's demographic information.
-4. Display each key-value pair from the metadata JSON object somewhere on the page.
-   ![hw](https://static.bc-edx.com/data/dl-1-2/m14/lms/img/hw03.jpg)
-5. Update all the plots when a new sample is selected.
-   Additionally, you are welcome to create any layout that you would like
-   for your dashboard. An example dashboard is shown as follows:
-   ![hw](https://static.bc-edx.com/data/dl-1-2/m14/lms/img/hw02.jpg)
-6. Deploy your app to a free static page hosting service,
-   such as GitHub Pages. Submit the links to your deployment and your
-   GitHub repo. Ensure that your repository has regular commits and a
-   thorough README.md file
+The horizontal bar chart displays the top 10 OTUs found in the selected subject. The otu_id is labeled on the left, the sample_values is the value in the bar chart, and the otu_labels are included as hovertext and can be seen when the user lays their cursor over each bar.
 
-   ### Advanced Challenge Assignment (Optional with no extra points earning)
+`<png>`
 
-   The following task is advanced and therefore optional.
+### Bubble Chart
 
+The bubble chart displays each sample for the selected subject. The otu_ids go along the x-axis and have different marker colors, the sample values are indicated by the y-axis and marker size, and the otu_labels are included as hovertext and can be seen when the user lays their cursor over each bubble.
 
-   * Adapt the Gauge Chart from [https://plot.ly/javascript/gauge-charts/](https://plot.ly/javascript/gauge-charts/)
+`<png>`
 
-* [
-  **Links to an external site.**](https://plot.ly/javascript/gauge-charts/) to plot the weekly washing frequency of the individual.
-* You will need to modify the example gauge code to account for values ranging from 0 through 9.
-* Update the chart whenever a new sample is selected.
-  ![Weekly Washing Frequency Gauge](https://static.bc-edx.com/data/dl-1-2/m14/lms/img/gauge.jpg)
+### Demographic Info
 
-  ### Hints
+The selected subject's demographic information is displayed here including the id number, ethnicity, gender, age, location, belly button type, and wash frequency.
 
+`<png>`
+![hw](https://static.bc-edx.com/data/dl-1-2/m14/lms/img/hw03.jpg)
 
-  * Use `console.log` inside of your JavaScript code to see what your data looks like at each step.
-* Refer to the [Plotly.js documentation](https://plot.ly/javascript/)
+### Completed Dashboard
 
-[
-**Links to an external site.**](https://plot.ly/javascript/) when building the plots.
+Here is an example of the completed interactive dashboard: 
+
+`<png>`
+
+ADD GitHubPages link here!
+
+-------------------------------------------------------------------------
+
+### Gauge Chart
+
+The selected subject's washing frequency is displayed in a gauge chart. 
+
+`<png>`
