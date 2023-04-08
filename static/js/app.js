@@ -80,7 +80,11 @@ function init() {
         Plotly.newPlot("bubble", bubbleTraceData, bubbleLayout);
         
 
+        
     });
 }
+
+// Create Demographic Info Table
+let dropdownMenu = d3.select("#selDataset");
 
   init();
