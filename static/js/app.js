@@ -5,6 +5,7 @@ function init() {
     d3.json(url).then((data) => {
     console.log(data);
 
+    // Extract names from data
     let names = data.names
     console.log(names);
 
@@ -14,11 +15,22 @@ function init() {
      dropdownMenu.append("option").text(X)
     });
 
+// Initialize Plots and Demographic Info with first subject ID
+    plots(names[0])
+    table(names[0])
+});
+
+}
+
+// Function To Create Plots
+function plots(input_id) {
+
+    d3.json(url).then((data) => {
+
 // Create Horizontal Bar Chart
 
     // Initialize arrays
-    let id = names[0];
-    let sample = data.samples.filter((sample) => sample.id === id)[0];
+    let sample = data.samples.filter((sample) => sample.id === input_id)[0];
     let otu_ids = [];
     let sample_values = [];
     let otu_labels = [];
@@ -47,8 +59,6 @@ function init() {
     // Apply layout
     let barLayout = {
         title: "Top 10 OTUs",
-        height: 450,
-        width: 300
     };
 
     // Render the plot to the div tag with id "bar"
@@ -72,19 +82,54 @@ function init() {
     // Apply layout
     let bubbleLayout = {
         xaxis: {title: 'OTU ID'},
-        height: 600,
-        width: 1000
     };
 
         // Render the plot to the div tag with id "bubble"
         Plotly.newPlot("bubble", bubbleTraceData, bubbleLayout);
         
 
-        
     });
 }
 
-// Create Demographic Info Table
-let dropdownMenu = d3.select("#selDataset");
+// Function To Demographic Info Table
+function table(input_id){
+    d3.json(url).then((data) => {
+        console.log(data);
+    
+        // Extract metadata from data
+        let metadata = data.metadata
+        console.log(metadata);
+    
+        // Filter metadata to match the input_id
+        let metasample = metadata.filter((x) => x.id == input_id)[0];
+    console.log(metasample)
+    
+        // Use D3 to select the metadata info
+        let metainfo = d3.select("#sample-metadata");
+        metainfo.html("")
+
+        // Iterate through each key-value pair in the metasample
+        Object.entries(metasample).forEach(entry => {
+            const [key, value] = entry;
+            console.log(key, value);
+            metainfo.append("h5").text(`${key}:${value}`)
+
+
+
+          });
+
+    
+    });
+    
+}
+
+// Function to change on dropdown menu selection
+function optionChanged(x){
+    // Update Plots with subject ID selection
+    plots(x)
+    // Update Demographic Info with subject ID selection
+    table(x)
+
+}
 
   init();
