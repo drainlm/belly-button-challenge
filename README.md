@@ -31,3 +31,9 @@ The bubble chart displays each sample for the selected subject. The otu_ids go a
 The selected subject's demographic information is displayed here including the id number, ethnicity, gender, age, location, belly button type, and wash frequency.
 
 ![1680924977788](image/README/1680924977788.png)
+
+### Gauge Chart
+
+The bonus.js includes this final plot, which displays the selected subject's washing frequency in a gauge chart.
+
+![1680927395723](image/README/1680927395723.png)

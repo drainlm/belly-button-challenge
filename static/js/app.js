@@ -87,7 +87,6 @@ function plots(input_id) {
         // Render the plot to the div tag with id "bubble"
         Plotly.newPlot("bubble", bubbleTraceData, bubbleLayout);
         
-
     });
 }
 
@@ -102,7 +101,7 @@ function table(input_id){
     
         // Filter metadata to match the input_id
         let metasample = metadata.filter((x) => x.id == input_id)[0];
-    console.log(metasample)
+        console.log(metasample)
     
         // Use D3 to select the metadata info
         let metainfo = d3.select("#sample-metadata");
@@ -114,10 +113,7 @@ function table(input_id){
             console.log(key, value);
             metainfo.append("h5").text(`${key}:${value}`)
 
-
-
           });
-
     
     });
     
